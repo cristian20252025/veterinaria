@@ -106,3 +106,17 @@ const resgistrarDuenoAsync = () => {
     };
 
 
+// Actualizar Estado de salud
+
+const ActualizarEstadosaludAsiync = async
+  const nombre = prompt("Nombre de las mascotas")
+  await new promise(resolve => setTimeout)
+  const mascota = mascotas.find(m => m.nombre)
+  if (!mascota) return alert("mascota")
+  const nuevoEstado = prompt("Nuevo estado de salud")
+  mascota.estadoSalud = nuevoEstado;
+  alert("Estado de salud actualizado.");
+  
+
+
+
