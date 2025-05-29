@@ -11,9 +11,9 @@ function menu(){
         opcion = prompt(
            // Menu Veterinaria
 "1. Registrar dueño\n"+
-"2. registrar mascota\n"+
-"3. listar mascotas\n"+
-"4. buscar mascota por nombre\n"+
+"2. Registrar mascota\n"+
+"3. Listar mascotas\n"+
+"4. Buscar mascota por nombre\n"+
 "5. Actualizar estado de salud\n"+
 "6. Eliminar nascota\n"+
 "7. ver mascotas de un dueño\n"+
@@ -36,3 +36,33 @@ function menu(){
 }
 
 menu();
+
+
+const ListarMascotas = () => {
+    if (mascotas.length === 0) return console.log("No hay mascotas regristadas.");
+    mascotas.forEach(m => {
+        console.log('${m.nombre} (${m.especie}) - Dueño: ${obtenernombredueño(m.idDueno)}');
+    });
+}
+
+const BuscarMascotapornombre = () => {
+    const nombre = prompt("Nombre de la mascota");
+    new Promise((resolve) => {
+        setTimeout(() => {
+            const mascota = mascotas.find(m => m.nombre.tolowerCase() === nombre.tolowerCase());
+            mascota ? resolve(mascota) : resolve(null);
+        }, 1500);
+    }).then(m => {
+        if (m){
+            console.log('Encontrada: ${m.nombre}, Estado: ${m.estadoSalud}');
+        } else {
+            alert("Mascota no encontrada.");
+
+        }
+      });
+    };
+    
+const obtenerNombreDueno = (id) => {ç
+    const d = duenos.find(d => d.id === id);
+    return d ? d.nombre : 'Desconocido';
+};
