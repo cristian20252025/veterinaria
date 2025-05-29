@@ -116,6 +116,27 @@ const ActualizarEstadosaludAsiync = async
   const nuevoEstado = prompt("Nuevo estado de salud")
   mascota.estadoSalud = nuevoEstado;
   alert("Estado de salud actualizado.");
+
+
+// Eliminar mascota
+
+const eliminarMascotaAsync = () => {
+  const nombre = prompt("Nombre de la mascotas.");
+  new promise ((resolve) => {
+    setTimeout(() => {
+      const index = mascotas.findIndex("mascota")
+      resolve (index);
+    }, 2000);
+ }).then(index => {
+   if (index === -1) return alert("mascota")
+   mascota.splice(index, 1);
+   alert("mascota elimina.");
+ });
+};
+
+
+
+
   
 
 
