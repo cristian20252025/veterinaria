@@ -68,6 +68,7 @@ const obtenerNombreDueno = (id) => {ç
 };
 
 //registrar Dueño
+
 const resgistrarDuenoAsync = () => {
     const nombre = prompt("Nombre:");
     const cedula = prompt("Cedula:");
@@ -81,4 +82,27 @@ const resgistrarDuenoAsync = () => {
         alert("Dueño registrado exitosamente.");
       }, 1500);
     };
+
+
+ //registrar Mascota   
+
+ const resgitrarMascotaAsync = () => {
+    const nombre = prompt ("Nombre:");
+    const especie = prompt ("especie(Perro, Gato, Ave, Reptil, Otro):");
+    const edad = parseFloat(prompt ("edad:"));
+    const peso = parseFloat(prompt ("peso:"));
+    const estadoSalud = prompt ("Estado de salud (Sano, Enfermo, En tratamiento):");
+    const cedulaDueno = prompt ("Cedula del dueño:");
+ 
+    if (!nombre || !especie || isNaN(edad) || isNaN(peso) || !estadoSalud || !cedulaDueno)
+      return alert("campos invalidos.");
+
+    setTimeout(() => {
+        const dueno = duenos.find(d => d.cedula === cedulaDueno);
+        if (!dueno) return alert("Dueño no encontrado.");
+        mascotas.push({ id: idMascotas++, nombre, especie, edad, peso, estadoSalud, idDueno: dueno.id});
+        alert("mascota registrada.");
+      }, 2000);
+    };
+
 
