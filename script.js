@@ -135,8 +135,18 @@ const eliminarMascotaAsync = () => {
 };
 
 
+// Ver Mascotas por Dueño
 
-
+const VerMascotasporDuenoAsiync = async()
+  const cedula = prompt("cedula del dueño")
+  await new promise(resolve => setTimeout())
+  const dueno = duenos.find(d => d.cedula)
+  if (!dueno) return alert("Dueño no")
+    
+  const mDueno = mascotas.filter(m => m.nombre)
+  if (mDueno.length === 0) return console.log()
+  console.log('Mascotas de ${dueno.no}')
+  mDueno.forEach(m => console.log('-${m}'))
   
 
 
