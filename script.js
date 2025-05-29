@@ -66,3 +66,19 @@ const obtenerNombreDueno = (id) => {ç
     const d = duenos.find(d => d.id === id);
     return d ? d.nombre : 'Desconocido';
 };
+
+//registrar Dueño
+const resgistrarDuenoAsync = () => {
+    const nombre = prompt("Nombre:");
+    const cedula = prompt("Cedula:");
+    const telefono = prompt("Telefono:");
+    const correo = prompt("Correo:");
+
+    if (!nombre || !cedula || !telefono || !correo) return alert("Campos vacios");
+
+    setTimeout (() => {
+        duenos.push({ id: idDuenos++, nombre, cedula, telefono, correo});
+        alert("Dueño registrado exitosamente.");
+      }, 1500);
+    };
+
