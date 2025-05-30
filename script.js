@@ -108,15 +108,15 @@ const resgistrarDuenoAsync = () => {
 
 // Actualizar Estado de salud
 
-const ActualizarEstadosaludAsiync = async
-  const nombre = prompt("Nombre de las mascotas")
-  await new promise(resolve => setTimeout)
-  const mascota = mascotas.find(m => m.nombre)
-  if (!mascota) return alert("mascota")
-  const nuevoEstado = prompt("Nuevo estado de salud")
+async function actualizarEstadoSaludAsiync() {
+  const nombre = prompt("Nombre de las mascota");
+  await new promise(resolve => setTimeout(resolve, 1000));
+  const mascota = mascotas.find(m => m.nombre.tolowerCase() === nombre.tolowerCase());
+  if (!mascota) return alert("mascota no encontrada");
+  const nuevoEstado = prompt("Nuevo estado de salud");
   mascota.estadoSalud = nuevoEstado;
   alert("Estado de salud actualizado.");
-
+}
 
 // Eliminar mascota
 
@@ -124,30 +124,28 @@ const eliminarMascotaAsync = () => {
   const nombre = prompt("Nombre de la mascotas.");
   new promise ((resolve) => {
     setTimeout(() => {
-      const index = mascotas.findIndex("mascota")
+      const index = mascotas.findIndex(m => m.nombre.tolowerCase() === nombre.tolowerCase());
       resolve (index);
     }, 2000);
  }).then(index => {
-   if (index === -1) return alert("mascota")
-   mascota.splice(index, 1);
-   alert("mascota elimina.");
+   if (index === -1) return alert("mascota no encontrada.");
+   mascotas.splice(index, 1);
+   alert("mascota eliminada.");
  });
 };
 
 
 // Ver Mascotas por Dueño
 
-const VerMascotasporDuenoAsiync = async()
-  const cedula = prompt("cedula del dueño")
-  await new promise(resolve => setTimeout())
-  const dueno = duenos.find(d => d.cedula)
-  if (!dueno) return alert("Dueño no")
-    
-  const mDueno = mascotas.filter(m => m.nombre)
-  if (mDueno.length === 0) return console.log()
-  console.log('Mascotas de ${dueno.no}')
-  mDueno.forEach(m => console.log('-${m}'))
-  
-
+async function VerMascotasporDuenoAsiync() {
+  const cedula = prompt("cedula del dueño:");
+  await new promise(resolve => setTimeout(resolve, 1000));
+  const dueno = duenos.find(d => d.cedula === cedula);
+  if (!dueno) return alert("Dueño no encontrado.");
+  const mDueno = mascotas.filter(m => m.idDueno === dueno.id);
+  if (mDueno.length === 0) return console.log("Este dueño no tiene mascotas registradas.");
+  console.log('Mascotas de ${dueno.nombre}:');
+  mDueno.forEach(m => console.log('-${m.nombre} (${m.especie}) - Estado: ${m.estadoSalud}'));
+}
 
 
